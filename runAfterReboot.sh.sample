@@ -1,0 +1,15 @@
+# set calling cron file
+cronfile=/etc/cron.d/afterReboot
+myScript=/root/install_after_reboot.sh
+
+#if file exist then delete it
+if [ ! -f $cronfile ]; then 
+  echo blah blah blah
+  echo creating $cronfile
+  echo "@reboot root [ -f $myScrip ] && $myScript"  >$cronfile
+  reboot
+else #finish up what we are doing and delete
+  echo hello >/root/hello.txt
+  rm -f $cronfile
+fi
+
