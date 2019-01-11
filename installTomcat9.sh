@@ -4,9 +4,9 @@ tomcatUri="https://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.14/bin/apache-tom
 tarBall=`echo $tomcatUri |awk -F "/" '{print $NF}'`
 tomcatVer=$(echo $tarBall |sed "s/\.tar\.gz//")
 
-#yum -y install java-1.8.0-openjdk-devel
+yum -y install java-1.8.0-openjdk-devel
 
-#useradd -m -U -d /opt/tomcat -s /bin/false tomcat
+useradd -m -U -d /opt/tomcat -s /bin/bash tomcat
 
 wget $tomcatUri
 if [ -f $tarBall ] ; then 
