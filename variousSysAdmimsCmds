@@ -1,0 +1,63 @@
+#list process sort my memory
+ps aux |sort -nk 4 |awk '{print $1, $4, $11}'
+
+#list proccess using the most % of mem
+ps aux |sort -nk 4 |awk '{print $1, $4, $11}' |tail -1
+
+# keep header:
+command |(read -r; printf "%s\n" "$REPLY"; sort)
+e.g.:
+df |(read -r; printf "%s\n" "$REPLY"; sort -r)
+
+#quickly backup /etc/passwd
+sudo cp /etc/passwd{,.bak}
+
+#date in friendly listing
+date +%F
+
+#back up files:
+cp /etc/passwd /etc/passwd.`date +%F`
+cp a.txt{,.$(date +%F)}
+
+# zeroing out a file while retaining attributes, ownership and inode
+> file.txt
+
+#deleting empty directories from this dir down
+find ./ -type d -empty -delete
+
+#make dir in list 
+mkdir -p ./{1..4}
+
+# recursively list files
+find . -type f -ls
+
+# list files and dir in tree
+tree /var/log
+
+#change to previous dir
+cd -
+
+#reset your terminal to emulator display
+reset
+
+# if file exists do something
+if [ -f ~/.bashrc]; then echo "~/bashrc exists"; fi
+
+# get run a command from a remote host e.g. uptime
+ssh user@remoteHost uptime
+ssh user@remoteHost ls -al
+
+#get current date/time in a different time zone
+TZ=America/Los_Angeles date
+
+#display calendar at command line
+cal
+#display calendar for 3 months
+cal -3
+#display calendar for 10/2020
+cal 10 2020
+
+#extract tar file to different dir
+tar tarfile.tar -C /new/path
+
+
