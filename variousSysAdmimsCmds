@@ -60,4 +60,17 @@ cal 10 2020
 #extract tar file to different dir
 tar tarfile.tar -C /new/path
 
+#Get kernel version using uname:
+uname -r |awk '{print gensub(".*el([0-9]+).x86_64","\\1","g",$0)}'
+
+#open tunnel through a jump host:
+ssh -N -L local_port:remote_host:remote_port jump_host &
+curl -k http://localhost:local_port
+
+
+#ssh tunnel, to run a command on a remote server:
+ssh user@remoteHost the command to run
+
+#look for multiple installed rpms:
+rpm -qa |grep -E "(^python|^hostname|^shadow)" |sort 
 
